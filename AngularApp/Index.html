@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+    <meta charset="utf-8" />
+    <title>My First Angular App</title>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/myapp.js"></script>
+</head>
+<body>
+    <div ng-controller="MyController">
+        {{ 5 + 15}}
+        {{MyVal}}
+        <input type="text" ng-model="MyVal" />
+        <hr />
+        <!-- Add an alert -->
+        <input type="button" ng-click="MyFun()" value="Submit" />
+        <hr />
+        <!-- Add parameterised alert-->
+        <input type="button" ng-click="MyFun2(MyVal)" value="Click me" />
+
+    </div>
+</body>
+</html>

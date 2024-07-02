@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html ng-app="StudentApp">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="Scripts/StudentScript.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/dirPagination.js"></script>
+</head>
+
+<body ng-controller="StudentDetailsController">
+    <div class="container">
+        <h1>Student Details</h1>
+        <div ng-if="student">
+            <p><strong>Student ID:</strong> {{ student.StudentID }}</p>
+            <p><strong>First Name:</strong> {{ student.FirstName }}</p>
+            <p><strong>Last Name:</strong> {{ student.LastName }}</p>
+            <p><strong>Age:</strong> {{ student.Age }}</p>
+            <p><strong>Gender:</strong> {{ student.Gender }}</p>
+            <button class="btn btn-warning">Edit</button>
+            <button class="btn btn-danger" >Delete</button>
+            <br /> <br />
+
+        </div>
+        <div ng-if="!student">
+            <p>Loading...</p>
+            <!-- Optionally add error message if student data is not available -->
+        </div>
+        <a href="ViewStudents.html" class="btn btn-primary">Back to Students</a>
+    </div>
+</body>
+</html>

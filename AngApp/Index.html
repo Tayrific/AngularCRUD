@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app>
+<head>
+    <meta charset="utf-8" />
+    <title>First Angular App </title>
+    <script src="Scripts/angular.min.js"></script>
+</head>
+<body ng-init="a=10; b=[1,2,3,4,5,6]">
+    <div>
+        {{5+3}}
+        {{a+5}}
+        {{a*a}}
+    </div>
+    <hr/>
+    {3+4}<br/>
+    {{3+4}}
+
+    <hr/>
+    <span ng-bind="a"></span>
+    <input type="text" ng-model="x" />
+    {{x}}
+    <span ng-bind="x"></span>
+    <ul ng-repeat="k in b">
+        <li>{{k}}</li>
+    </ul>
+    <hr />
+    <ul ng-repeat="k in b">
+        <li ng-if="k>5">{{k}}</li>
+    </ul>
+
+    <input type="radio" ng-model="G" value="M" />M
+    <input type="radio" ng-model="G" value="F" />F
+    YOU HAVE SELECTED:{{G}}
+    <br />
+    <input type="checkbox" ng-true-value="'Ok'" ng-false-value="'No'" ng-model="Ck" /> I Agree
+    {{Ck}}
+    <br />
+    <select ng-model="Opt1">
+        <option>Select</option>
+        <option ng-repeat="k in b" value="{{k}}"> {{k}}</option>
+    </select>
+    <br />
+    {{Opt1}}
+    <br />
+    <select ng-model="Opt2" ng-options="k for k in b"></select>
+    {{Opt2}}
+    <br />
+    <select multiple="multiple" ng-model="Opt3" ng-options="k for k in b"></select>
+    {{Opt3}}
+
+</body>
+</html>

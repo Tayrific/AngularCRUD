@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/scriptDDL.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/dirPagination.js"></script>
+</head>
+<body>
+    <!--{{7+3}}
+    <div ng-controller="CustomerController">
+        <hr />
+        <input type="button" value="GetData" ng-click="GetCustomers()" /><br />
+        <div> {{MyValue}}</div>
+        <div>
+            <ul ng-repeat="cust in MyValue ">
+                <li>CustId:{{cust.CustomerID}} CustName:{{cust.ContactName}}   CompanyName:{{cust.CompanyName}}</li>
+            </ul>
+            <select ng-model="c" ng-options="cust.CustomerID as cust.ContactName for cust in MyValue"></select>
+            {{c}}
+        </div>
+        <div>
+            <table class="table-striped">
+                <tr>
+                    <td><strong>Customer ID</strong></td>
+                    <td><strong>Contact Name</strong></td>
+                    <td><strong>Company Name</strong></td>
+                </tr>
+                <tr ng-repeat="cust in MyValue">
+                    <td>{{cust.CustomerID}}</td>
+                    <td>{{cust.ContactName}}</td>
+                    <td>{{cust.CompanyName}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>-->
+
+    <div ng-controller="CustomerController">
+        <!-- Bind Customer name to dropdownlist-->
+        <input type="button" value="GetData" ng-click="GetCustomers()" />
+        <select ng-model="c" ng-change="GetCustomers()" ng-options="cust.CustomerID as cust.ContactName for cust in MyValue"> </select>
+
+        <hr /><br />
+
+        <!--Nested controllers-->
+        <!-- populate dropdownlist with customerID -->
+              <div ng-controller="CustomerOrderController">
+                  <input type="button" value="GetCustomerOrders" ng-click="GetCustomers()" />
+                  <select ng-model="d" ng-change="GetCustomerOrdersbyId(d)" ng-options="cust.CustomerID as cust.ContactName for cust in MyValue"> </select>
+                  <select ng-model="e" ng-options="orders.OrderID as orders.OrderID for orders in MyOrders"></select>
+                  <hr />
+                  <!--{{MyOrders}}-->
+                  search: &nbsp<input type="text" ng-model="search" value=" " />
+                  <hr />
+
+                  <table class="table table-hover" width="80%">
+                      <tr>
+                          <td ng-click="Sort('OrderID')">OrderID</td>
+                          <td>CustomerID</td>
+                          <td>Order Date</td>
+                          <td>Freight</td>
+                          <td>Ship Name</td>
+                          <td>Ship Address</td>
+                          <td>Ship City</td>
+                          <td>Ship PostalCode</td>
+                          <td>Ship Country</td>
+                      </tr>
+                     <!-- <tr ng-repeat="orders in MyOrders | filter:search | orderBy:key:AscOrDesc"> -->
+
+                          <tr dir-paginate="orders in MyOrders | filter:search | orderBy:key:AscOrDesc | itemsPerPage:3">
+                          <td>{{orders.OrderID}}</td>
+                          <td>{{orders.CustomerID}}</td>
+                          <td>{{orders.OrderDate | filterdate |date:'dd-MM-yyyy HH:mm:ss'}}</td>
+                          <td>{{orders.Freight}}</td>
+                          <td>{{orders.ShipName | uppercase}}</td>
+                          <td>{{orders.ShipAddress | uppercase}}</td>
+                          <td>{{orders.ShipCity}}</td>
+                          <td>{{orders.ShipPostalCode}}</td>
+                          <td>{{orders.ShipCountry}}</td>
+                      </tr>
+
+                      </table>
+                      <center>
+                          <dir-pagination-controls max-size="3"
+                                                   direction-links="true"
+                                                   boundary-links="true">
+                          </dir-pagination-controls>
+                      </center>
+                  </div>
+
+        </div>
+    </body>
+    </html>

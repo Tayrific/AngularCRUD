@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/script.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+{{7+3}}
+
+<div ng-controller="CustomerController" >
+    <hr/>
+    <input type="button" value="GetData" ng-click="GetCustomers()" /><br/>
+    <div> <!--{{MyValue}}--></div>
+    <div>
+        <ul ng-repeat="cust in MyValue ">
+            <li>CustId:{{cust.CustomerID}} CustName:{{cust.ContactName}}   CompanyName:{{cust.CompanyName}}</li>
+        </ul>
+<select ng-model="c" ng-options="cust.CustomerID as cust.ContactName for cust in MyValue"></select>
+    {{c}}
+    </div>
+     <div>
+         <table class="table-striped">
+             <tr>
+                 <td><strong>Customer ID</strong></td>
+                 <td><strong>Contact Name</strong></td>
+                 <td><strong>Company Name</strong></td>
+             </tr>
+             <tr ng-repeat="cust in MyValue">
+                 <td>{{cust.CustomerID}}</td>
+                 <td>{{cust.ContactName}}</td>
+                 <td>{{cust.CompanyName}}</td>
+             </tr>
+         </table>
+
+     </div>  
+
+</div>
+</body>
+</html>
